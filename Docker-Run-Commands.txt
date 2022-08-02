@@ -1,6 +1,15 @@
 ##### Elasticsearch container ###
-docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" Docker-Image-Name:version
+docker run --name elasticsearch --net elastic -d -p 9200:200 -p 9300:9300 elastc-image-reddy:1.0
 
 ####### KIBANA #######
-docker run -d --name kibana --net elastic -p 5601:5601 -e "ELAStICSEARCH_HOSTS=http://elasticsearch:9200" Docker-Image-Name:version
+docker run --name kibana --net elastic -d -p 5601:5601 kibana-image-reddy:1.0
+
+# check the containers are running or not , once containers are wrking good will access the elasticsearch and kibana.
+Elasticsearch-Link: http://localhost:5601
+
+# to get the password to login use the below process & See the attached Image && Go to Elasticsearch container & run the below command.
+# The enrollment token is automatically generated when you start Elasticsearch for the first time. You might need to scroll back a bit in the terminal to - view it. To generate a new enrollment token, run the following command from the Elasticsearch installation directory:
+CMD: bin/elasticsearch-create-enrollment-token --scope kibana
+O/P : copy password and add in login details UN = elastic & PW
+  
 
